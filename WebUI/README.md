@@ -1,82 +1,55 @@
-# Lightweight React Template for KAVIA
+# Voice AI WebUI (React)
 
-This project provides a minimal React template with a clean, modern UI and minimal dependencies.
+This WebUI provides a responsive, accessible interface for a voice-enabled AI bot.
+It includes session lifecycle controls, microphone mute/unmute, transcript display, and
+placeholders for LiveKit and backend API calls.
 
-## Features
+## Quick Start
 
-- **Lightweight**: No heavy UI frameworks - uses only vanilla CSS and React
-- **Modern UI**: Clean, responsive design with KAVIA brand styling
-- **Fast**: Minimal dependencies for quick loading times
-- **Simple**: Easy to understand and modify
+From this directory:
 
-## Getting Started
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-### `npm test`
-
-Launches the test runner in interactive watch mode.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-## Customization
-
-### Colors
-
-The main brand colors are defined as CSS variables in `src/App.css`:
-
-```css
-:root {
-  --kavia-orange: #E87A41;
-  --kavia-dark: #1A1A1A;
-  --text-color: #ffffff;
-  --text-secondary: rgba(255, 255, 255, 0.7);
-  --border-color: rgba(255, 255, 255, 0.1);
-}
+```bash
+npm install
+npm start
 ```
 
-### Components
+- The preview will open at http://localhost:3000
+- No environment variables are required to run the UI in no-op mode
+- Microphone permission may be requested when starting a session
 
-This template uses pure HTML/CSS components instead of a UI framework. You can find component styles in `src/App.css`. 
+## Environment Configuration
 
-Common components include:
-- Buttons (`.btn`, `.btn-large`)
-- Container (`.container`)
-- Navigation (`.navbar`)
-- Typography (`.title`, `.subtitle`, `.description`)
+Copy `.env.example` to `.env` and configure as needed:
 
-## Learn More
+```
+REACT_APP_LIVEKIT_URL=
+REACT_APP_LIVEKIT_API_KEY=
+REACT_APP_LIVEKIT_API_SECRET=
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Notes:
+- These values must be provided by the orchestrator or your deployment environment.
+- Until these are set, LiveKit connection is a no-op and audio is not streamed to any backend.
 
-### Code Splitting
+## Features Now
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- App layout with header, footer, theme toggle
+- Session controls: Start/Stop, Mic Mute/Unmute
+- Transcript log area with auto-scroll
+- Accessible buttons and ARIA attributes
+- Mobile-friendly responsive styles
+- Service stubs: `services/livekitClient.ts`, `services/audioRecorder.ts`
+- Hook: `hooks/useVoiceSession.ts` for session state and integration points
 
-### Analyzing the Bundle Size
+## Future Integration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- LiveKit: Replace `connectIfConfigured()` and add real connection logic.
+- Backend APIs: Add calls for STT/TTS and AI responses.
+- Auth: Integrate secure session management as required by the backend.
 
-### Making a Progressive Web App
+## Scripts
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- `npm start` - Run dev server
+- `npm run build` - Production build
+- `npm test` - Run tests
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
