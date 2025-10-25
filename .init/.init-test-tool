@@ -1,0 +1,4 @@
+{
+    "command": "npm run test",
+    "working_directory": "/home/kavia/workspace/code-generation/voice-ai-agent-using-livekit-179326-179366/WebUI"
+}
